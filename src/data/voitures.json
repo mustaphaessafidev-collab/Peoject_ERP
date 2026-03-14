@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "name": "Mercedes-Benz S-Class",
+    "category": "Luxury",
+    "price_per_day": 145,
+    "transmission": "Automatic",
+    "seats": 5,
+    "location": "Casablanca",
+    "available": true,
+    "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 2,
+    "name": "Land Rover Defender",
+    "category": "SUV",
+    "price_per_day": 110,
+    "transmission": "Automatic",
+    "seats": 7,
+    "location": "Marrakech",
+    "available": true,
+    "image": "https://images.unsplash.com/photo-1605515298946-d062f2e9da53?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 3,
+    "name": "Tesla Model 3",
+    "category": "Electric",
+    "price_per_day": 85,
+    "transmission": "Automatic",
+    "seats": 5,
+    "location": "Rabat",
+    "available": true,
+    "image": "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 4,
+    "name": "BMW M4 Competition",
+    "category": "Luxury",
+    "price_per_day": 130,
+    "transmission": "Automatic",
+    "seats": 4,
+    "location": "Casablanca",
+    "available": true,
+    "image": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 5,
+    "name": "Audi Q7",
+    "category": "SUV",
+    "price_per_day": 95,
+    "transmission": "Automatic",
+    "seats": 7,
+    "location": "Tangier",
+    "available": true,
+    "image": "https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 6,
+    "name": "Porsche Taycan",
+    "category": "Electric",
+    "price_per_day": 190,
+    "transmission": "Automatic",
+    "seats": 4,
+    "location": "Casablanca",
+    "available": true,
+    "image": "https://images.unsplash.com/photo-1614200024993-21c39211d9ad?auto=format&fit=crop&q=80&w=800"
+  }
+]
