@@ -10,6 +10,7 @@ export default function App() {
       <Routes>
         <Route path="/VehicleCatalogPage" element={<VehicleCatalogPage />} />
         <Route path="/VehicleDetail/:id" element={<VehicleDetails />} />
+        
       </Routes>
     </BrowserRouter>
   );
