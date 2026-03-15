@@ -9,23 +9,23 @@ export default function Filters({
   return (
     <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
       <div className="mb-6 flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-slate-800">Filters</h2>
+        <h2 className="text-lg font-semibold text-slate-800">Filtres</h2>
 
         <button
           className="text-sm text-blue-600 hover:underline"
           onClick={() => {
-            setSelectedCategory("All Vehicles");
-            setSelectedBrand("All Brands");
+            setSelectedCategory("Tous les véhicules");
+            setSelectedBrand("Toutes les marques");
             setMaxPrice(450);
           }}
         >
-          Reset All
+          Réinitialiser
         </button>
       </div>
 
       <div className="mb-6">
         <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">
-          Category
+          Catégorie
         </p>
 
         <div className="space-y-2 text-sm text-slate-600">
@@ -33,10 +33,10 @@ export default function Filters({
             <input
               type="radio"
               name="category"
-              checked={selectedCategory === "All Vehicles"}
-              onChange={() => setSelectedCategory("All Vehicles")}
+              checked={selectedCategory === "Tous les véhicules"}
+              onChange={() => setSelectedCategory("Tous les véhicules")}
             />
-            All Vehicles
+            Tous les véhicules
           </label>
 
           <label className="flex items-center gap-2">
@@ -53,30 +53,30 @@ export default function Filters({
             <input
               type="radio"
               name="category"
-              checked={selectedCategory === "Sedan"}
-              onChange={() => setSelectedCategory("Sedan")}
+              checked={selectedCategory === "Berline"}
+              onChange={() => setSelectedCategory("Berline")}
             />
-            Sedan
+            Berline
           </label>
 
           <label className="flex items-center gap-2">
             <input
               type="radio"
               name="category"
-              checked={selectedCategory === "Luxury"}
-              onChange={() => setSelectedCategory("Luxury")}
+              checked={selectedCategory === "Luxe"}
+              onChange={() => setSelectedCategory("Luxe")}
             />
-            Luxury
+            Luxe
           </label>
 
           <label className="flex items-center gap-2">
             <input
               type="radio"
               name="category"
-              checked={selectedCategory === "Electric"}
-              onChange={() => setSelectedCategory("Electric")}
+              checked={selectedCategory === "Électrique"}
+              onChange={() => setSelectedCategory("Électrique")}
             />
-            Electric
+            Électrique
           </label>
         </div>
       </div>
@@ -84,11 +84,11 @@ export default function Filters({
       <div className="mb-6">
         <div className="mb-3 flex items-center justify-between">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-            Price / Day
+            Prix / Jour
           </p>
 
           <span className="text-sm font-semibold text-blue-600">
-            $0 - ${maxPrice}
+            0€ - {maxPrice}€
           </span>
         </div>
 
@@ -104,7 +104,7 @@ export default function Filters({
 
       <div>
         <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">
-          Brand
+          Marque
         </p>
 
         <select
@@ -112,7 +112,7 @@ export default function Filters({
           onChange={(e) => setSelectedBrand(e.target.value)}
           className="w-full rounded-lg border border-slate-200 p-2 text-sm"
         >
-          <option>All Brands</option>
+          <option>Toutes les marques</option>
           <option>TESLA</option>
           <option>BMW</option>
           <option>AUDI</option>

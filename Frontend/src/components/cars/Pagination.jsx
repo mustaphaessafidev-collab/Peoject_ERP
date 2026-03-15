@@ -5,9 +5,11 @@ export default function Pagination({
 }) {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
+  if (totalPages <= 1) return null;
+
   return (
     <div className="flex justify-center">
-      <div className="inline-flex items-center  gap-3 rounded-xl border border-slate-200 bg-white px-4 py-1 shadow-sm">
+      <div className="inline-flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-1 shadow-sm">
         <button
           onClick={() => setCurrentPage(currentPage - 1)}
           disabled={currentPage === 1}
