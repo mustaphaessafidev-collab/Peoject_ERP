@@ -1,13 +1,21 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import vehiclesDB from "../fake-data/vehicules-api.json";
 import VehicleImage from "../components/cars/VehicleDetails/VehicleImage";
 import VehicleInfo from "../components/cars/VehicleDetails/VehicleInfo";
 import VehicleSpecifications from "../components/cars/VehicleDetails/VehicleSpecifications";
-//import BookingCard from "../components/cars/VehicleDetails/BookingCard";
+import BookingCard from "../components/cars/VehicleDetails/BookingCard";
+import RelatedVehicles from "../components/cars/VehicleDetails/RelatedVehicles";
+import RentalTerms from "../components/cars/VehicleDetails/RentalConditions";
 import Navbar from "../layout/Navbar";
+import Footer from "../layout/Footer";
 
 export default function VehicleDetails() {
   const { id } = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   const vehicles = vehiclesDB.data.map((vehicule) => ({
     id: vehicule.id,
@@ -30,38 +38,32 @@ export default function VehicleDetails() {
   const vehicle = vehicles.find((v) => v.id === Number(id));
 
   if (!vehicle) {
-    return (
-      <>
-        <Navbar />
-        <div className="p-6 text-center text-lg font-semibold text-slate-700">
-          Véhicule introuvable
-        </div>
-      </>
-    );
+    return <div>Véhicule introuvable</div>;
   }
 
   return (
     <>
       <Navbar />
 
-      <section className="bg-slate-50 px-4 py-6 md:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <h1 className="mb-6 text-2xl font-bold text-slate-800">
-            Détails du véhicule
-          </h1>
-
-          <div className="grid gap-6 lg:grid-cols-3">
-            <div className="space-y-6 lg:col-span-2">
+      <section className="bg-slate-50 px-4 py-6 md:px-5 lg:px-6">
+        <div className="mx-auto max-w-7xl space-y-5">
+          <div className="grid gap-5 lg:grid-cols-3">
+            <div className="space-y-5 lg:col-span-2">
               <VehicleImage image={vehicle.image} />
               <VehicleInfo vehicle={vehicle} />
               <VehicleSpecifications vehicle={vehicle} />
+              <RentalTerms />
             </div>
 
             <div className="lg:col-span-1">
+              <BookingCard vehicle={vehicle} />
             </div>
           </div>
+
+          <RelatedVehicles currentVehicle={vehicle} />
         </div>
       </section>
+      <Footer/>
     </>
   );
 }

@@ -6,12 +6,24 @@ import VehicleGrid from "../components/cars/VehicleGrid";
 import Footer from "../layout/Footer";
 import Navbar from "../layout/Navbar";
 import vehiclesDB from "../fake-data/vehicules-api.json";
+import { useLocation } from "react-router-dom";
 
 export default function VehicleCatalogPage() {
   const [selectedCategory, setSelectedCategory] = useState("Tous les véhicules");
   const [selectedBrand, setSelectedBrand] = useState("Toutes les marques");
   const [maxPrice, setMaxPrice] = useState(450);
   const [currentPage, setCurrentPage] = useState(1);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.selectedCategory) {
+      setSelectedCategory(location.state.selectedCategory);
+    }
+
+    if (location.state?.selectedBrand) {
+      setSelectedBrand(location.state.selectedBrand);
+    }
+  }, [location.state]);
 
   const carsPerPage = 6;
 
