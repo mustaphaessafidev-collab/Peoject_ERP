@@ -49,16 +49,16 @@ export default function CarCard({ car }: { car: Car }) {
           </div>
           <div className="flex items-center gap-1.5 text-muted-foreground text-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-border" />
-            {car.seats} Seats
+            {car.seats} Places
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-2 mt-4">
           <button className="py-2.5 px-4 text-sm font-medium text-muted-foreground hover:bg-secondary rounded-xl transition-colors">
-            Details
+            Détails
           </button>
           <button className="py-2.5 px-4 text-sm font-semibold bg-foreground text-background hover:opacity-90 rounded-xl transition-colors shadow-sm">
-            Book Now
+            Réserver
           </button>
         </div>
       </div>

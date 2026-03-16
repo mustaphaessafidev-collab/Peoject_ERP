@@ -1,7 +1,19 @@
 import { useState } from "react";
 import { Menu, X, User } from "lucide-react";
 
-const navLinks = ["Catalog", "My Bookings", "Support"];
+const navLinks = [
+  { label: "Catalogue", href: "#catalog" },
+  { label: "Mes Réservations", href: "#" },
+  { label: "Support", href: "#" },
+];
+
+const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  if (href.startsWith("#")) {
+    e.preventDefault();
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  }
+};
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -19,21 +31,22 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <a
-              key={link}
-              href={link === "Catalog" ? "#catalog" : "#"}
+              key={link.label}
+              href={link.href}
+              onClick={(e) => scrollToSection(e, link.href)}
               className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-secondary"
             >
-              {link}
+              {link.label}
             </a>
           ))}
         </div>
 
         <div className="hidden md:flex items-center gap-2">
           <button className="px-4 py-2 text-sm font-semibold text-foreground hover:bg-secondary rounded-lg transition-colors">
-            Sign In
+            Connexion
           </button>
-          <button className="w-9 h-9 flex items-center justify-center rounded-lg bg-secondary hover:bg-accent transition-colors">
-            <User className="w-4 h-4 text-muted-foreground" />
+          <button className="px-5 py-2 text-sm font-semibold bg-primary text-primary-foreground rounded-lg hover:bg-brand-hover transition-colors">
+            Se connecter
           </button>
         </div>
 
@@ -45,12 +58,17 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden border-t border-border bg-background px-6 py-4 space-y-2">
           {navLinks.map((link) => (
-            <a key={link} href="#" className="block py-2 text-sm font-medium text-muted-foreground hover:text-foreground">
-              {link}
+            <a
+              key={link.label}
+              href={link.href}
+              onClick={(e) => { scrollToSection(e, link.href); setOpen(false); }}
+              className="block py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+            >
+              {link.label}
             </a>
           ))}
           <button className="w-full mt-2 py-2.5 text-sm font-semibold bg-primary text-primary-foreground rounded-lg">
-            Sign In
+            Se connecter
           </button>
         </div>
       )}
