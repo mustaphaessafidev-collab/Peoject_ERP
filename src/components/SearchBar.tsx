@@ -3,15 +3,15 @@ export default function SearchBar() {
     <div className="max-w-4xl mx-auto bg-card p-2 md:p-3 rounded-[24px] shadow-search flex flex-col md:flex-row gap-2 items-center">
       <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-2 px-4">
         <div className="flex flex-col items-start py-2">
-          <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">Pickup Location</label>
-          <input type="text" placeholder="Search city..." className="w-full text-sm font-medium bg-transparent focus:outline-none text-foreground placeholder:text-muted-foreground/50" />
-        </div>
-        <div className="flex flex-col items-start py-2 border-y md:border-y-0 md:border-x border-border/50 md:px-6">
-          <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">Pick-up Date</label>
-          <input type="date" className="w-full text-sm font-medium bg-transparent focus:outline-none text-foreground" />
-        </div>
-        <div className="flex flex-col items-start py-2 md:pl-6">
-          <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">Return Date</label>
+          <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">Lieu de prise en charge</label>
+           <input type="text" placeholder="Rechercher une ville..." className="w-full text-sm font-medium bg-transparent focus:outline-none text-foreground placeholder:text-muted-foreground/50" />
+         </div>
+         <div className="flex flex-col items-start py-2 border-y md:border-y-0 md:border-x border-border/50 md:px-6">
+           <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">Date de départ</label>
+           <input type="date" className="w-full text-sm font-medium bg-transparent focus:outline-none text-foreground" />
+         </div>
+         <div className="flex flex-col items-start py-2 md:pl-6">
+           <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">Date de retour</label>
           <input type="date" className="w-full text-sm font-medium bg-transparent focus:outline-none text-foreground" />
         </div>
       </div>
