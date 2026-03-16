@@ -28,7 +28,7 @@ export default function Footer() {
               DriveERP
             </div>
             <p className="text-background/50 text-sm leading-relaxed mb-6 max-w-xs">
-              Integrated enterprise car rental solutions for business and leisure. Streamlining your journey through innovation and reliability.
+              Solutions intégrées de location de voitures pour les entreprises et les particuliers. Simplifier vos trajets grâce à l'innovation et la fiabilité.
             </p>
             <div className="flex gap-3">
               {[Twitter, Linkedin, Mail].map((Icon, i) => (
