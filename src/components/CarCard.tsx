@@ -55,10 +55,10 @@ export default function CarCard({ car }: { car: Car }) {
 
         <div className="grid grid-cols-2 gap-2 mt-4">
           <button className="py-2.5 px-4 text-sm font-medium text-muted-foreground hover:bg-secondary rounded-xl transition-colors">
-            Details
+            Détails
           </button>
           <button className="py-2.5 px-4 text-sm font-semibold bg-foreground text-background hover:opacity-90 rounded-xl transition-colors shadow-sm">
-            Book Now
+            Réserver
           </button>
         </div>
       </div>
