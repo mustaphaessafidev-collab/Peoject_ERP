@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import FleetSection from "@/components/FleetSection";
 import Features from "@/components/Features";
+import Stats from "@/components/Stats";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
@@ -12,6 +13,7 @@ const Index = () => {
       <Hero />
       <FleetSection />
       <Features />
+      <Stats />
       <CTA />
       <Footer />
     </div>
