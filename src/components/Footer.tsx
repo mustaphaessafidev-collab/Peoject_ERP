@@ -54,7 +54,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-background/10 mt-16 pt-8 text-center">
-          <p className="text-xs text-background/40">© 2023 DriveERP Portal. All rights reserved.</p>
+          <p className="text-xs text-background/40">© 2023 DriveERP Portal. Tous droits réservés.</p>
         </div>
       </div>
     </footer>

@@ -24,8 +24,8 @@ export default function Features() {
     <section className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground mb-3">Why DriveERP?</h2>
-          <p className="text-muted-foreground max-w-lg mx-auto">Built for professionals who demand reliability, transparency, and speed.</p>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground mb-3">Pourquoi DriveERP ?</h2>
+          <p className="text-muted-foreground max-w-lg mx-auto">Conçu pour les professionnels exigeant fiabilité, transparence et rapidité.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -16,7 +16,7 @@ export default function SearchBar() {
         </div>
       </div>
       <button className="w-full md:w-auto whitespace-nowrap bg-primary hover:bg-brand-hover text-primary-foreground px-8 py-4 rounded-[18px] font-bold transition-all active:scale-95">
-        Find Cars
+        Rechercher
       </button>
     </div>
   );

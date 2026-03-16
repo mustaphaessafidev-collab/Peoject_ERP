@@ -49,7 +49,7 @@ export default function CarCard({ car }: { car: Car }) {
           </div>
           <div className="flex items-center gap-1.5 text-muted-foreground text-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-border" />
-            {car.seats} Seats
+            {car.seats} Places
           </div>
         </div>
 
