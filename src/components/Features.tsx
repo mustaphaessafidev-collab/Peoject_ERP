@@ -4,18 +4,18 @@ import { motion } from "framer-motion";
 const features = [
   {
     icon: Shield,
-    title: "Best Price Guarantee",
-    text: "We provide the most competitive rates in the market with no hidden fees or extra charges upon return.",
+    title: "Meilleur prix garanti",
+    text: "Nous offrons les tarifs les plus compétitifs du marché, sans frais cachés ni suppléments au retour.",
   },
   {
     icon: Headphones,
-    title: "24/7 Roadside Support",
-    text: "Our dedicated support team is available around the clock to assist you with any issues during your journey.",
+    title: "Assistance routière 24h/24",
+    text: "Notre équipe d'assistance dédiée est disponible à tout moment pour vous aider en cas de problème pendant votre trajet.",
   },
   {
     icon: Key,
-    title: "Seamless Digital Access",
-    text: "Unlock your vehicle directly through the app. No paperwork, no queues, just pick up and drive.",
+    title: "Accès digital simplifié",
+    text: "Déverrouillez votre véhicule directement via l'application. Sans paperasse, sans file d'attente, prenez le volant.",
   },
 ];
 
