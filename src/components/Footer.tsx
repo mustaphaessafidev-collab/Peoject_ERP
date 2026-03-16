@@ -2,16 +2,16 @@ import { Twitter, Linkedin, Mail } from "lucide-react";
 
 const columns = [
   {
-    title: "Platform",
-    links: ["Browse Fleet", "ERP Integration", "Pricing Plans", "Locations"],
+    title: "Plateforme",
+    links: ["Parcourir la flotte", "Intégration ERP", "Tarifs", "Emplacements"],
   },
   {
     title: "Support",
-    links: ["Help Center", "Safety Info", "Cancellation Policy", "Terms of Service"],
+    links: ["Centre d'aide", "Infos sécurité", "Politique d'annulation", "Conditions d'utilisation"],
   },
   {
-    title: "Company",
-    links: ["About Us", "Sustainability", "Careers", "Contact"],
+    title: "Entreprise",
+    links: ["À propos", "Développement durable", "Carrières", "Contact"],
   },
 ];
 
