@@ -5,9 +5,9 @@ export default function Hero() {
     <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20">
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=2000"
+          src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&q=80&w=2000"
           className="w-full h-full object-cover"
-          alt="Premium car on road"
+          alt="Voiture premium sur la route"
         />
         <div className="absolute inset-0 bg-foreground/40 backdrop-blur-[2px]" />
       </div>
