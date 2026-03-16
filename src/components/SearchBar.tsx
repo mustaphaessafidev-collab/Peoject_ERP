@@ -1,6 +1,6 @@
 export default function SearchBar() {
   return (
-    <div className="max-w-4xl mx-auto bg-card p-2 md:p-3 rounded-[24px] shadow-search flex flex-col md:flex-row gap-2 items-center">
+    <div className="max-w-4xl mx-auto bg-card/95 backdrop-blur-xl p-2 md:p-3 rounded-[24px] shadow-search border border-white/10 flex flex-col md:flex-row gap-2 items-center">
       <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-2 px-4">
         <div className="flex flex-col items-start py-2">
           <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">Lieu de prise en charge</label>
