@@ -15,7 +15,7 @@ export default function SearchBar() {
           <input type="date" className="w-full text-sm font-medium bg-transparent focus:outline-none text-foreground" />
         </div>
       </div>
-      <button className="w-full md:w-auto whitespace-nowrap bg-primary hover:bg-brand-hover text-primary-foreground px-8 py-4 rounded-[18px] font-bold transition-all active:scale-95">
+      <button className="w-full md:w-auto whitespace-nowrap bg-primary hover:bg-brand-hover text-primary-foreground px-8 py-4 rounded-[18px] font-bold transition-all duration-200 active:scale-95 shadow-lg hover:shadow-xl">
         Rechercher
       </button>
     </div>
