@@ -42,7 +42,7 @@ export default function LoginPage() {
       <div
         className="hidden lg:flex lg:w-1/2 relative flex-col justify-center p-10 overflow-hidden"
         style={{
-          backgroundImage: 'url(/luxury-car-hero.png)',
+          backgroundImage: 'url(/luxury-car-hero1.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -84,17 +84,22 @@ export default function LoginPage() {
           <h1 className="text-5xl font-bold text-white leading-tight mb-4">
             Experience the road<br /> like never before.
           </h1>
-          <p className="text-gray-400 text-base max-w-xs leading-relaxed">
+          <p className="text-gray-400 text-base max-w-xs leading-relaxed" style={{color: "gray"}}>
             Access our exclusive fleet of luxury vehicles and manage your bookings with our premium ERP portal.
           </p>
         </div>
 
-        {/* Bottom decorative car shape */}
-        <div className="absolute bottom-0 left-0 right-0 h-48 z-0">
-          <svg viewBox="0 0 600 160" className="w-full h-full opacity-20" fill="none">
-            <ellipse cx="300" cy="140" rx="280" ry="30" fill="rgba(59,130,246,0.4)" />
-            <path d="M80 120 Q180 60 300 60 Q420 60 520 120 L540 130 Q400 110 300 110 Q200 110 60 130 Z" fill="rgba(255,255,255,0.06)" />
-          </svg>
+        {/* Bottom social proof */}
+        <div className="absolute bottom-10 left-10 z-10 flex items-center gap-4">
+          {/* Overlapping avatars */}
+          <div className="flex -space-x-3">
+            <img src="https://i.pravatar.cc/150?img=21" alt="avatar" className="w-10 h-10 rounded-full border-2 border-white object-cover flex-shrink-0" />
+            <img src="https://i.pravatar.cc/150?img=12" alt="avatar" className="w-10 h-10 rounded-full border-2 border-white object-cover flex-shrink-0" />
+            <img src="https://i.pravatar.cc/150?img=48" alt="avatar" className="w-10 h-10 rounded-full border-2 border-white object-cover flex-shrink-0" />
+          </div>
+          <p className="text-white text-sm font-medium">
+            Trusted by <span className="font-bold">2k+</span> owners.
+          </p>
         </div>
       </div>
 

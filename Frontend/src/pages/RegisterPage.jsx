@@ -44,7 +44,7 @@ export default function RegisterPage() {
       <div
         className="hidden lg:flex lg:w-1/2 relative flex-col justify-center p-10 overflow-hidden"
         style={{
-          backgroundImage: 'url(/luxury-car-hero1.png)',
+          backgroundImage: 'url(/luxury-car-hero.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center 40%',
         }}
@@ -90,13 +90,20 @@ export default function RegisterPage() {
           </p>
         </div>
 
-        {/* Bottom glow */}
-        <div className="absolute bottom-0 left-0 right-0 h-48 z-0">
-          <svg viewBox="0 0 600 160" className="w-full h-full opacity-20" fill="none">
-            <ellipse cx="300" cy="140" rx="280" ry="30" fill="rgba(59,130,246,0.4)" />
-          </svg>
+        {/* Bottom social proof */}
+        <div className="absolute bottom-10 left-10 z-10 flex items-center gap-4">
+          {/* Overlapping avatars */}
+          <div className="flex -space-x-3">
+            <img src="https://i.pravatar.cc/150?img=32" alt="avatar" className="w-10 h-10 rounded-full border-2 border-white object-cover flex-shrink-0" />
+            <img src="https://i.pravatar.cc/150?img=13" alt="avatar" className="w-10 h-10 rounded-full border-2 border-white object-cover flex-shrink-0" />
+            <img src="https://i.pravatar.cc/150?img=47" alt="avatar" className="w-10 h-10 rounded-full border-2 border-white object-cover flex-shrink-0" />
+          </div>
+          <p className="text-white text-sm font-medium">
+            Join <span className="font-bold">10,000+</span> premium drivers worldwide.
+          </p>
         </div>
       </div>
+      
 
       {/* ── RIGHT PANEL ── */}
       <div className="flex-1 flex flex-col justify-between bg-white px-8 py-6 sm:px-16 overflow-hidden">
