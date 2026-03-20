@@ -1,23 +1,20 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Mail, Lock } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { authService } from '../services/auth';
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
+  const [activeTab, setActiveTab] = useState('signin');
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [needsValidation, setNeedsValidation] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -25,16 +22,12 @@ export default function LoginPage() {
     setIsLoading(true);
     setError(null);
     setNeedsValidation(false);
-
     try {
       await authService.login(formData);
-      // Login successful, auth_token is saved, navigate to test success page
       navigate('/test-success');
     } catch (err) {
       const errorMsg = err.message || 'Login failed. Please check your credentials.';
       setError(errorMsg);
-      
-      // Check if the error indicates that the email is not validated
       if (errorMsg.toLowerCase().includes('email no') || errorMsg.toLowerCase().includes('validate')) {
         setNeedsValidation(true);
       }
@@ -43,53 +36,129 @@ export default function LoginPage() {
     }
   };
 
-  const navigateToValidation = () => {
-    navigate('/validate-email', { state: { email: formData.email } });
-  };
-
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Sign in to your account
-        </h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
-          Or{' '}
-          <Link to="/register" className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors">
-            create a new account
-          </Link>
-        </p>
+    <div className="flex min-h-screen">
+      {/* ── LEFT PANEL ── */}
+      <div
+        className="hidden lg:flex lg:w-1/2 relative flex-col justify-center p-10 overflow-hidden"
+        style={{
+          backgroundImage: 'url(/luxury-car-hero.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-black/60" />
+
+        {/* Subtle grid overlay */}
+        <div
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+            backgroundSize: '40px 40px',
+          }}
+        />
+
+        {/* Car silhouette gradient */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-2/3 opacity-30"
+          style={{
+            background: 'radial-gradient(ellipse at 50% 100%, rgba(59, 130, 246, 0.3) 0%, transparent 70%)',
+          }}
+        />
+
+        {/* Logo — pinned top-left */}
+        <div className="absolute top-10 left-10 z-10 flex items-center gap-3">
+          <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+            <svg viewBox="0 0 24 24" className="w-6 h-6 text-white fill-current">
+              <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/>
+              <circle cx="7.5" cy="14.5" r="1.5"/>
+              <circle cx="16.5" cy="14.5" r="1.5"/>
+            </svg>
+          </div>
+          <span className="text-white font-bold text-lg tracking-wide">PREMIUM RENTALS</span>
+        </div>
+
+        {/* Hero text */}
+        <div className="relative z-10">
+          <h1 className="text-5xl font-bold text-white leading-tight mb-4">
+            Experience the road<br /> like never before.
+          </h1>
+          <p className="text-gray-400 text-base max-w-xs leading-relaxed">
+            Access our exclusive fleet of luxury vehicles and manage your bookings with our premium ERP portal.
+          </p>
+        </div>
+
+        {/* Bottom decorative car shape */}
+        <div className="absolute bottom-0 left-0 right-0 h-48 z-0">
+          <svg viewBox="0 0 600 160" className="w-full h-full opacity-20" fill="none">
+            <ellipse cx="300" cy="140" rx="280" ry="30" fill="rgba(59,130,246,0.4)" />
+            <path d="M80 120 Q180 60 300 60 Q420 60 520 120 L540 130 Q400 110 300 110 Q200 110 60 130 Z" fill="rgba(255,255,255,0.06)" />
+          </svg>
+        </div>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow-xl sm:rounded-lg sm:px-10 border border-gray-100">
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            {error && (
-              <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded-md">
-                <div className="flex">
-                  <div className="ml-3">
-                    <p className="text-sm text-red-700 font-medium">{error}</p>
-                    {needsValidation && (
-                      <button 
-                        type="button"
-                        onClick={navigateToValidation}
-                        className="mt-2 text-sm font-semibold text-indigo-600 hover:text-indigo-500 underline focus:outline-none"
-                      >
-                        Click here to verify your email
-                      </button>
-                    )}
-                  </div>
-                </div>
-              </div>
-            )}
+      {/* ── RIGHT PANEL ── */}
+      <div className="flex-1 flex flex-col justify-between bg-white px-8 py-10 sm:px-16">
+        <div className="max-w-md mx-auto w-full flex flex-col justify-center min-h-full py-8">
 
+          {/* Heading */}
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-1">Welcome back</h2>
+            <p className="text-gray-500 text-sm">Please enter your details to access your account.</p>
+          </div>
+
+          {/* Tabs */}
+          <div className="flex rounded-xl border border-gray-200 p-1 mb-8 bg-gray-50">
+            <button
+              type="button"
+              onClick={() => setActiveTab('signin')}
+              className={`flex-1 py-2 text-sm font-medium rounded-lg transition-all ${
+                activeTab === 'signin'
+                  ? 'bg-white text-blue-600 shadow-sm border border-gray-200'
+                  : 'text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              Sign In
+            </button>
+            <Link
+              to="/register"
+              onClick={() => setActiveTab('signup')}
+              className={`flex-1 py-2 text-sm font-medium rounded-lg text-center transition-all ${
+                activeTab === 'signup'
+                  ? 'bg-white text-blue-600 shadow-sm border border-gray-200'
+                  : 'text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              Sign Up
+            </Link>
+          </div>
+
+          {/* Error banner */}
+          {error && (
+            <div className="mb-5 bg-red-50 border border-red-200 rounded-lg p-3 text-sm text-red-700">
+              {error}
+              {needsValidation && (
+                <button
+                  type="button"
+                  onClick={() => navigate('/validate-email', { state: { email: formData.email } })}
+                  className="block mt-1 font-semibold text-blue-600 hover:text-blue-500 underline"
+                >
+                  Click here to verify your email
+                </button>
+              )}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                Email address
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">
+                Email Address
               </label>
-              <div className="mt-1 relative rounded-md shadow-sm">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-gray-400" />
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                  <Mail className="h-4 w-4 text-gray-400" />
                 </div>
                 <input
                   id="email"
@@ -97,66 +166,99 @@ export default function LoginPage() {
                   type="email"
                   autoComplete="email"
                   required
-                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-all"
-                  placeholder="you@example.com"
                   value={formData.email}
                   onChange={handleChange}
+                  placeholder="example@email.com"
+                  className="w-full pl-10 pr-4 py-2.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all placeholder-gray-400"
                 />
               </div>
             </div>
 
+            {/* Password */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Password
-              </label>
-              <div className="mt-1 relative rounded-md shadow-sm">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-gray-400" />
+              <div className="flex items-center justify-between mb-1.5">
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                  Password
+                </label>
+                <a href="#" className="text-sm font-medium text-blue-600 hover:text-blue-500">
+                  Forgot password?
+                </a>
+              </div>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                  <Lock className="h-4 w-4 text-gray-400" />
                 </div>
                 <input
                   id="password"
                   name="password"
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   autoComplete="current-password"
                   required
-                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-all"
-                  placeholder="••••••••"
                   value={formData.password}
                   onChange={handleChange}
+                  placeholder="••••••••"
+                  className="w-full pl-10 pr-10 py-2.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all placeholder-gray-400"
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </button>
               </div>
             </div>
 
-            <div className="flex items-center justify-end">
-              <div className="text-sm">
-                <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                   Forgot your password?
-                </a>
-              </div>
+            {/* Remember me */}
+            <div className="flex items-center gap-2">
+              <input
+                id="remember"
+                type="checkbox"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+                className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 cursor-pointer"
+              />
+              <label htmlFor="remember" className="text-sm text-gray-600 cursor-pointer select-none">
+                Remember me for 30 days
+              </label>
             </div>
 
-            <div>
-              <button
-                type="submit"
-                disabled={isLoading}
-                className={`w-full flex justify-center py-2.5 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors ${
-                  isLoading ? 'opacity-70 cursor-not-allowed' : ''
-                }`}
-              >
-                {isLoading ? (
-                  <span className="flex items-center">
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Signing in...
-                  </span>
-                ) : (
-                  'Sign in'
-                )}
-              </button>
-            </div>
+            {/* Submit */}
+            <button
+              type="submit"
+              disabled={isLoading}
+              className={`w-full py-3 text-sm font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors ${
+                isLoading ? 'opacity-70 cursor-not-allowed' : ''
+              }`}
+            >
+              {isLoading ? (
+                <span className="flex items-center justify-center gap-2">
+                  <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                  </svg>
+                  Signing in...
+                </span>
+              ) : (
+                'Sign In'
+              )}
+            </button>
           </form>
+
+          {/* Create account link */}
+          <p className="mt-6 text-center text-sm text-gray-500">
+            Don't have an account?{' '}
+            <Link to="/register" className="font-semibold text-blue-600 hover:text-blue-500 transition-colors">
+              Create an account
+            </Link>
+          </p>
+        </div>
+
+        {/* Footer */}
+        <div className="flex justify-center gap-6 text-xs text-gray-400 pt-4">
+          <a href="#" className="hover:text-gray-600 transition-colors">Privacy Policy</a>
+          <a href="#" className="hover:text-gray-600 transition-colors">Terms of Service</a>
+          <a href="#" className="hover:text-gray-600 transition-colors">Contact Support</a>
         </div>
       </div>
     </div>
